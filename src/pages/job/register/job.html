@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button io-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Job Registration</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="formGroup" (ngSubmit)="register(); $event.preventDefault()">
+      <ion-item>
+        <ion-label stacked>Name Job*</ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido</p>
+      <button ion-button block type="submit" [disabled]="formGroup.invalid">Create Job</button>
+    </form>
+  
+  </ion-content>
