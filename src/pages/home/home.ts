@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController } from 'ionic-angular';
 import { CredentialsDTO } from '../../models/credential.dto';
+import { AuthService } from '../../service/auth.service';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public menu: MenuController,
-    // public authService: AuthService
+    public authService: AuthService
   ) {
 
   }
@@ -28,17 +29,17 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    // this.authService.refreshToken().subscribe(response => {
-    //   this.authService.successfulLogin(response.headers.get('Authorization'));
-    //   this.navCtrl.setRoot('CategoriesPage');
-    // }, error => {});
+     this.authService.refreshToken().subscribe(response => {
+       this.authService.successfulLogin(response.headers.get('Authorization'));
+       this.navCtrl.setRoot('JobListPage');
+     }, error => {});
   }
 
   login() {
-    // this.authService.authenticate(this.creds).subscribe(response => {
-    //   this.authService.successfulLogin(response.headers.get('Authorization'));
+     this.authService.authenticate(this.creds).subscribe(response => {
+       this.authService.successfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('JobListPage');
-    // }, error => {});
+     }, error => {});
   }
 
   signup() {

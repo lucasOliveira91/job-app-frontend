@@ -7,6 +7,9 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../service/auth.service';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { StorageService } from '../service/storage.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -23,6 +27,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
   ],
   providers: [
+    HttpClient,
+    StorageService,
+    AuthService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
