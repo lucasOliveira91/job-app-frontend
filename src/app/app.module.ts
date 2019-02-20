@@ -1,4 +1,3 @@
-import { ModalParentJob } from './../pages/job/register/modals/modal-parent-job';
 import { ErrorInterceptorProvider } from './../interceptor/error-interceptor';
 import { AuthInterceptorProvider } from './../interceptor/auth-interceptor';
 import { JobService } from './../service/domain/job.service';
@@ -19,7 +18,6 @@ import { StorageService } from '../service/storage.service';
   declarations: [
     MyApp,
     HomePage,
-    ModalParentJob
   ],
   imports: [
     BrowserModule,
@@ -30,7 +28,6 @@ import { StorageService } from '../service/storage.service';
   entryComponents: [
     MyApp,
     HomePage,
-    ModalParentJob
   ],
   providers: [
     JobService,

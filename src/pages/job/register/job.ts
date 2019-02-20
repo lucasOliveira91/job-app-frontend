@@ -1,8 +1,7 @@
-import { ModalParentJob } from './modals/modal-parent-job';
 import { JobDTO } from './../../../models/job-dto';
 import { JobService } from './../../../service/domain/job.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, Modal } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /**
@@ -96,7 +95,13 @@ export class JobPage {
   }
   
   modalParentJob() {
-    const profileModal = this.modalCtrl.create(ModalParentJob, { userId: 8675309 });
-    profileModal.present();
+    const parentJobModal: Modal = this.modalCtrl.create('ModalParentJob');
+    parentJobModal.present();
+
+    parentJobModal.onWillDismiss((data) => {
+      console.log(data);
+    });
   }
+
+ 
 }
