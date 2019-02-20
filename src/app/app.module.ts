@@ -1,3 +1,7 @@
+import { ModalParentJob } from './../pages/job/register/modals/modal-parent-job';
+import { ErrorInterceptorProvider } from './../interceptor/error-interceptor';
+import { AuthInterceptorProvider } from './../interceptor/auth-interceptor';
+import { JobService } from './../service/domain/job.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -15,6 +19,7 @@ import { StorageService } from '../service/storage.service';
   declarations: [
     MyApp,
     HomePage,
+    ModalParentJob
   ],
   imports: [
     BrowserModule,
@@ -25,13 +30,17 @@ import { StorageService } from '../service/storage.service';
   entryComponents: [
     MyApp,
     HomePage,
+    ModalParentJob
   ],
   providers: [
+    JobService,
     HttpClient,
     StorageService,
     AuthService,
     StatusBar,
     SplashScreen,
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

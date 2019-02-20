@@ -10,11 +10,19 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
     <button ion-button block  color="tertiary" (click)="register()">Register</button>
 
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="showJob(item.id)">
-      <h2>{{item.name}}</h2>
-    </button>
-  </ion-list>
+    <ion-list>
+        <button ion-item *ngFor="let item of items" (click)="showJob(item.id)">
+          <h2>{{item.name}}</h2>
+        </button>
+      </ion-list>
+    
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
 </ion-content>

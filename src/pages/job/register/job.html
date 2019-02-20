@@ -9,13 +9,25 @@
 
 
 <ion-content padding>
-    <form [formGroup]="formGroup" (ngSubmit)="register(); $event.preventDefault()">
-      <ion-item>
-        <ion-label stacked>Name Job*</ion-label>
-        <ion-input formControlName="name" type="text"></ion-input>
-      </ion-item>
-      <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido</p>
-      <button ion-button block type="submit" [disabled]="formGroup.invalid">Create Job</button>
-    </form>
-  
-  </ion-content>
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label stacked>Name Job*</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button (click)="modalParentJob()">+ Parent Job</button>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button (click)="modalParentJob()">+ Tasks</button>
+    </ion-item>
+
+    <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido</p>
+    <button ion-button block type="submit" (click)="register()" *ngIf="!item" [disabled]="formGroup.invalid">Create Job</button>
+    <button ion-button block type="submit" (click)="register()" *ngIf="item && item.id" [disabled]="formGroup.invalid">Update Job</button>
+    <button ion-button block color="danger" (click)="delete(item.id)" *ngIf="item && item.id">Delete Job</button>
+
+  </form>
+
+</ion-content>

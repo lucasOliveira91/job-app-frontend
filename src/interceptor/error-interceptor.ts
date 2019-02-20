@@ -1,5 +1,5 @@
-import { FieldMessage } from './../models/fieldmessage';
-import { StorageService } from './../services/storage.service';
+import { FieldMessage } from './../models/field-message';
+import { StorageService } from './../service/storage.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -25,8 +25,6 @@ export class ErrorInterceptor implements HttpInterceptor {
             if(!errorObj.status) {
                 errorObj = JSON.parse(errorObj);
             }
-            console.log('error detected by interceptor');
-            console.log(errorObj);
 
             switch(errorObj.status) {
                 case 401:

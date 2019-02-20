@@ -1,8 +1,8 @@
 import { API_CONFIG } from './../config/api.config';
-import { StorageService } from './../services/storage.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { StorageService } from '../service/storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
         let N = API_CONFIG.baseUrl.length;
         let requestToApi =  req.url.substr(0, N) == API_CONFIG.baseUrl;
-
+        
         if (localUser && requestToApi) {
             const authReq = req.clone({ headers: req.headers.set("Authorization", "Bearer " + localUser.token) });
             return next.handle(authReq)
