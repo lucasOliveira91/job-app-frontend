@@ -18,5 +18,6 @@
 ### Login
 - Use the follow credentials:
 > user: admin@gmail.com
+
 > password: adminPass
 
