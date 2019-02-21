@@ -9,3 +9,15 @@
 - Check the installation with:
 > ionic -v and cordova -v
 
+- Download dependencies
+>npm instal
+
+- Run app
+>ionic serve
+
+### Login
+- Use the follow credentials:
+> user: admin@gmail.com
+
+> password: adminPass
+
