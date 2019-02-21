@@ -43,7 +43,7 @@ export class MyApp {
     switch(page.title) {
       case 'Logout':
       this.authService.logout();
-      // this.nav.setRoot('HomePage');
+      this.nav.setRoot(HomePage);
       break;
 
       default:

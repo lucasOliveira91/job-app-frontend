@@ -17,7 +17,7 @@ import { StorageService } from '../service/storage.service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    HomePage
   ],
   imports: [
     BrowserModule,
