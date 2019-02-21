@@ -13,17 +13,19 @@
     <ion-item>
       <ion-label stacked>Name Job*</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
+      <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido</p>
     </ion-item>
 
     <ion-item>
-      <button ion-button (click)="modalParentJob()">+ Parent Job</button>
+      <ion-label stacked>Parent Job</ion-label>
+      <ion-input formControlName="parentJob" type="text"></ion-input>
     </ion-item>
-
-    <ion-item>
-      <button ion-button (click)="modalParentJob()">+ Tasks</button>
-    </ion-item>
-
-    <p class="danger" *ngIf="formGroup.controls.name.dirty && formGroup.controls.name.errors" margin-left>Valor inválido</p>
+    <ion-card>
+      <button ion-button icon-left (click)="modalTaskCreation()">
+        <ion-icon name="add-circle"></ion-icon>
+        Task
+      </button>
+    </ion-card>
     <button ion-button block type="submit" (click)="register()" *ngIf="!item" [disabled]="formGroup.invalid">Create Job</button>
     <button ion-button block type="submit" (click)="register()" *ngIf="item && item.id" [disabled]="formGroup.invalid">Update Job</button>
     <button ion-button block color="danger" (click)="delete(item.id)" *ngIf="item && item.id">Delete Job</button>

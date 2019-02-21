@@ -1,3 +1,4 @@
+import { AuthService } from './../service/auth.service';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,11 +16,17 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    public authService: AuthService
+  ) {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: 'JobListPage' }
+      { title: 'Home', component: 'JobListPage' },
+      { title: 'Logout', component: '' }
     ];
 
   }
@@ -31,7 +38,17 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    this.nav.setRoot(page.component);
+  openPage(page : {title: string, component: string}) {
+   
+    switch(page.title) {
+      case 'Logout':
+      this.authService.logout();
+      // this.nav.setRoot('HomePage');
+      break;
+
+      default:
+      this.nav.setRoot(page.component);
+    }
+
   }
 }

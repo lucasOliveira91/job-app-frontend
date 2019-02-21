@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ModalParentJob } from './modal-parent-job';
+import { ModalTask } from './modal-task';
 
 @NgModule({
   declarations: [
-    ModalParentJob,
+    ModalTask,
   ],
   imports: [
-    IonicPageModule.forChild(ModalParentJob),
+    IonicPageModule.forChild(ModalTask),
   ],
 })
 export class JobPageModule {}

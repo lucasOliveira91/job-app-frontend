@@ -27,10 +27,10 @@ export class JobPage {
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public jobService: JobService,
-    public modalCtrl: ModalController 
+    public modalCtrl: ModalController, 
   ) {
     this.formGroup = this.formBuilder.group({
-      id: [null, null],
+      id: [0, null],
       name: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
       parentJob: [null, null],
       tasks: [null, null],
@@ -51,7 +51,7 @@ export class JobPage {
 
   register() {
     if(this.formGroup.valid) {
-      if(!this.formGroup.controls['id']) {
+      if(this.formGroup.controls['id'].value === 0) {
         this.save();
       }else {
         this.update();
@@ -94,14 +94,12 @@ export class JobPage {
     alert.present();
   }
   
-  modalParentJob() {
-    const parentJobModal: Modal = this.modalCtrl.create('ModalParentJob');
+  modalTaskCreation() {
+    const parentJobModal: Modal = this.modalCtrl.create('ModalTask', {data: {}});
     parentJobModal.present();
 
     parentJobModal.onWillDismiss((data) => {
       console.log(data);
     });
   }
-
- 
 }

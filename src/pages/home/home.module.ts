@@ -4,6 +4,6 @@ import { IonicPageModule } from 'ionic-angular';
 
 @NgModule({
     declarations: [HomePage],
-    imports: [IonicPageModule.forChild(HomePage)]
+    imports: [IonicPageModule.forChild(HomePage)],
 })
 export class HomeModule{}
