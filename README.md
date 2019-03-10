@@ -1,6 +1,6 @@
 # Job App - Frontend
 
-## instalattion
+## instalation
 - Download the nodeJ and install with default configurations
 - Check the instalation with the follow commands: 
 > node -v and npm -v 
